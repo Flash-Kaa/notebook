@@ -1,0 +1,8 @@
+C:\Users\admin\source\repos\Notebook\Notebook\bin\Debug\Notebook.exe.config
+C:\Users\admin\source\repos\Notebook\Notebook\bin\Debug\Notebook.exe
+C:\Users\admin\source\repos\Notebook\Notebook\bin\Debug\Notebook.pdb
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Debug\Notebook.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Debug\Notebook.csproj.SuggestedBindingRedirects.cache
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Debug\Notebook.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Debug\Notebook.exe
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Debug\Notebook.pdb
