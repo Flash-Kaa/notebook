@@ -1,0 +1,8 @@
+C:\Users\admin\source\repos\Notebook\Notebook\bin\Release\Notebook.exe.config
+C:\Users\admin\source\repos\Notebook\Notebook\bin\Release\Notebook.exe
+C:\Users\admin\source\repos\Notebook\Notebook\bin\Release\Notebook.pdb
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Release\Notebook.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Release\Notebook.csproj.SuggestedBindingRedirects.cache
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Release\Notebook.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Release\Notebook.exe
+C:\Users\admin\source\repos\Notebook\Notebook\obj\Release\Notebook.pdb

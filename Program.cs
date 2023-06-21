@@ -2,42 +2,42 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 namespace Notebook
 {
     class Program
     {
         // Путь к создаваемому редактору (блокноту)
-        static string editorPathFile = @"C:\Users\admin\OneDrive\Рабочий стол\FWorld\FiLeS\notebook\notebookEdit.txt";
+        const string EditorPathFile = @"C:\Users\admin\OneDrive\Рабочий стол\FWorld\FiLeS\notebook\notebookEdit.txt";
 
         // Все пути к файлам (без имени самого файла)
-        static string diskLocalPath = @"C:\Users\admin\OneDrive\Рабочий стол\FWorld\FiLeS\notebook\";
-        static string diskOneDrivePath = @"C:\Users\admin\OneDrive\notebook\";
-        static string diskYandexPath = @"C:\Users\admin\YandexDisk\notebook\";
+        const string DiskLocalPath = @"C:\Users\admin\OneDrive\Рабочий стол\FWorld\FiLeS\notebook\";
+        const string DiskOneDrivePath = @"C:\Users\admin\OneDrive\notebook\";
+        const string DiskYandexPath = @"C:\Users\admin\YandexDisk\notebook\";
 
         static void Main()
         {
-            // Определение названия файла
-            var fileName = NamingFile(diskLocalPath);
-
             // Создание файла редактора
-            FileInfo editor = new FileInfo(editorPathFile);
+            var editor = new FileInfo(EditorPathFile);
             editor.Create().Close();
 
             // Открытие редактора и ожидание его закрытия
-            var p = Process.Start(editorPathFile);
+            var p = Process.Start(EditorPathFile);
             while (!p.HasExited) 
             { 
+                Thread.Sleep(500);
             }
 
             // Перемещение файлов по необходимым папкам
-            MoveFiles(editor, fileName);
+            MoveFiles(editor);
+            editor.Delete();
         }
 
         static string NamingFile(string diskLocalPath)
         {
             // Формат даты
-            DateTime time = DateTime.Today;
+            var time = DateTime.Today;
             var date = time.Day + "-" + time.Month + "-" + time.Year;
 
             // Ожидаемое название файла
@@ -47,7 +47,7 @@ namespace Notebook
             fileName.Append(".txt");
 
             // Определение итогового названия файла (если файл с таким названием уже есть)
-            FileInfo diskLocal = new FileInfo(diskLocalPath + fileName.ToString());
+            var diskLocal = new FileInfo(diskLocalPath + fileName.ToString());
             while (diskLocal.Exists)
             {
                 fileName.Insert(fileName.Length - 4, "{New}");
@@ -57,18 +57,20 @@ namespace Notebook
             return fileName.ToString();
         }
 
-        static void MoveFiles(FileInfo editor, string fileName)
+        static void MoveFiles(FileInfo editor)
         {
+            // Определение названия файла
+            var fileName = NamingFile(DiskLocalPath);
+
             // Итоговое расположение файлов
-            var diskLocalPathFile = diskLocalPath + fileName.ToString();
-            var diskOneDrivePathFile = diskOneDrivePath + fileName.ToString();
-            var diskYandexPathFile = diskYandexPath + fileName.ToString();
+            var diskLocalPathFile = DiskLocalPath + fileName.ToString();
+            var diskOneDrivePathFile = DiskOneDrivePath + fileName.ToString();
+            var diskYandexPathFile = DiskYandexPath + fileName.ToString();
 
             // Перемещение файлов по необходимым папкам
             editor.CopyTo(diskOneDrivePathFile);
             editor.CopyTo(diskYandexPathFile);
             editor.CopyTo(diskLocalPathFile);
-            editor.Delete();
         }
     }
 }
